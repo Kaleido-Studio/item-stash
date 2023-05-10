@@ -1,3 +1,1 @@
-<template>
-  here is the rent page
-</template>
+<template>here is the rent page</template>

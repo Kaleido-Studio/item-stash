@@ -1,3 +1,1 @@
-<template>
-  here is the list page
-</template>
+<template>here is the list page</template>
