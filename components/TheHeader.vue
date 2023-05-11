@@ -1,5 +1,5 @@
 <template>
-  <nav class="border-1 border-black text-2xl container mx-auto">
+  <nav class="text-2xl mx-auto card p-4">
     <h3>I am the header</h3>
   </nav>
 </template>
