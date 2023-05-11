@@ -1,4 +1,3 @@
-<!-- eslint-disable no-bitwise -->
 <template>
   <canvas
     ref="canvas"
@@ -9,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+/* eslint-disable no-bitwise */
 interface Point {
   x: number;
   y: number;
@@ -34,6 +34,7 @@ const drawRibbon = (wh: { width: number; height: number }, g2d: CanvasRenderingC
       { x: 0, y: wh.height * 0.7 + config.s },
       { x: 0, y: wh.height * 0.7 - config.s },
     ];
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     while (q[1].x < wh.width + config.s) draw(q[0], q[1]);
   };
 
@@ -47,14 +48,14 @@ const drawRibbon = (wh: { width: number; height: number }, g2d: CanvasRenderingC
     g2d.lineTo(k, n);
     g2d.closePath();
     r -= pi / -50;
-    g2d.fillStyle =
-      '#' +
-      (
-        ((Math.cos(r) * 127 + 128) << 16) |
-        ((Math.cos(r + pi / 3) * 127 + 128) << 8) |
-        (Math.cos(r + (pi / 3) * 2) * 127 + 128)
-      ).toString(16);
+    // eslint-disable-next-line no-param-reassign
+    g2d.fillStyle = `#${(
+      ((Math.cos(r) * 127 + 128) << 16) |
+      ((Math.cos(r + pi / 3) * 127 + 128) << 8) |
+      (Math.cos(r + (pi / 3) * 2) * 127 + 128)
+    ).toString(16)}`;
     g2d.fill();
+    // eslint-disable-next-line prefer-destructuring
     q[0] = q[1];
     q[1] = { x: k, y: n };
   };
