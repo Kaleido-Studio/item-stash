@@ -21,6 +21,9 @@ devDependencies:
   '@unocss/nuxt':
     specifier: ^0.51.12
     version: 0.51.12(postcss@8.4.23)(vite@4.3.5)(webpack@5.82.0)
+  '@unocss/reset':
+    specifier: ^0.51.12
+    version: 0.51.12
   eslint:
     specifier: ^8.40.0
     version: 8.40.0
