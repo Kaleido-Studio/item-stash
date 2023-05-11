@@ -20,10 +20,7 @@ const config = {
 
 const pi = Math.PI * 2;
 
-const drawRibbon = (
-  wh: { width: number; height: number },
-  g2d: CanvasRenderingContext2D
-) => {
+const drawRibbon = (wh: { width: number; height: number }, g2d: CanvasRenderingContext2D) => {
   let q: Point[];
   let r = 0;
 
@@ -45,13 +42,13 @@ const drawRibbon = (
     g2d.beginPath();
     g2d.moveTo(i.x, i.y);
     g2d.lineTo(j.x, j.y);
-    const k = j.x + (Math.random() * 2 - 0.25) * config.s,
-      n = line(j.y);
+    const k = j.x + (Math.random() * 2 - 0.25) * config.s;
+    const n = line(j.y);
     g2d.lineTo(k, n);
     g2d.closePath();
     r -= pi / -50;
     g2d.fillStyle =
-      "#" +
+      '#' +
       (
         ((Math.cos(r) * 127 + 128) << 16) |
         ((Math.cos(r + pi / 3) * 127 + 128) << 8) |
@@ -74,12 +71,12 @@ const drawCanv = () => {
   wh.height = newWh.height;
   wh.width = newWh.width;
   if (!canvas.value) {
-    console.log("asfkdug");
+    console.log('asfkdug');
     return;
   }
-  const g2d = canvas.value.getContext("2d");
+  const g2d = canvas.value.getContext('2d');
   if (!g2d) {
-    console.log("oioh");
+    console.log('oioh');
     return;
   }
   g2d.scale(pr.value, pr.value);
@@ -88,7 +85,7 @@ const drawCanv = () => {
 onMounted(() => {
   drawCanv();
 });
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
   drawCanv();
 });
 </script>

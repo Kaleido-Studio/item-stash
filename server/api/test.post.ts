@@ -2,11 +2,11 @@ export default defineEventHandler(async (event) => {
   const data = await readMultipartFormData(event);
   data?.forEach((item) => {
     switch (item.name) {
-      case "data": {
+      case 'data': {
         console.log(item.data.toString());
         break;
       }
-      case "img": {
+      case 'img': {
         console.log(item.data.buffer);
         break;
       }
@@ -16,6 +16,6 @@ export default defineEventHandler(async (event) => {
     }
   });
   return {
-    message: "ok",
+    message: 'ok',
   };
 });

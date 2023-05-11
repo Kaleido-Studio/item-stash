@@ -30,7 +30,7 @@
     "vue/html-self-closing": 0,
     "vue/html-indent": 0,
     "vue/html-closing-bracket-newline": 0,
-    "vue/multi-word-component-names":0
+    "vue/multi-word-component-names": 0
   },
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
