@@ -59,8 +59,8 @@ const useKV = () => {
   };
 
   // https://developers.cloudflare.com/api/operations/workers-kv-namespace-write-key-value-pair-with-metadata
-  const getKey = async (key: string) => {
-    const data = await apiKV<string>(`/values/${key}`, {
+  const getKey = async <T = string>(key: string): Promise<T> => {
+    const data = await apiKV<T>(`/values/${key}`, {
       method: 'GET',
     });
     return data;
