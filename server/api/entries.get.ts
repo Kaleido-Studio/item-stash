@@ -1,3 +1,5 @@
-export default defineEventHandler(() => ({
-  message: 'ok',
-}));
+export default defineEventHandler(async () => {
+  const kv = useKV();
+  const keys = await kv.getKeys();
+  return keys;
+});
