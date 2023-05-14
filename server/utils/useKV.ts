@@ -1,4 +1,4 @@
-import { ofetch, FetchOptions } from 'ofetch';
+import { ofetch, type FetchOptions } from 'ofetch';
 
 const { accountId, apiToken, namespaceId } = process.env;
 

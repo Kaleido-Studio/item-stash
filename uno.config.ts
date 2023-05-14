@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { defineConfig } from 'unocss/vite';
 import {
-  presetWind,
+  defineConfig,
   presetAttributify,
+  presetWind,
   transformerAttributifyJsx,
-  transformerVariantGroup,
   transformerDirectives,
+  transformerVariantGroup,
 } from 'unocss';
 
 export default defineConfig({

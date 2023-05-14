@@ -2,6 +2,7 @@ name = "item-stash"
 main = "./.output/server/index.mjs"
 workers_dev = true
 compatibility_date = "2022-09-10"
+account_id = "760e9193133c0d5f061bc623a7d6d761"
 
 [site]
 bucket = ".output/public"
