@@ -29,8 +29,13 @@
   },
   "packageManager": "pnpm@8.5.0",
   "dependencies": {
+    "@vueuse/core": "^10.1.2",
+    "@vueuse/nuxt": "^10.1.2",
+    "html2canvas": "^1.4.1",
+    "nanoid": "^4.0.2",
     "nuxt": "^3.4.3",
     "ofetch": "^1.0.1",
-    "only-allow": "^1.1.1"
+    "only-allow": "^1.1.1",
+    "qrcode": "^1.5.3"
   }
 }

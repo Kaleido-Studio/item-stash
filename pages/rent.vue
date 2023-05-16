@@ -8,4 +8,6 @@ interface Item {
 const route = useRoute();
 
 const query = computed(() => route.query);
+
+// klala
 </script>
