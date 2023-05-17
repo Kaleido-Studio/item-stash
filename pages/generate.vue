@@ -3,7 +3,6 @@
 import QRCode from 'qrcode';
 import { computedAsync } from '@vueuse/core';
 import html2canvas from 'html2canvas';
-import { nanoid } from 'nanoid';
 
 const text = ref('物品名字');
 const card = ref<null | HTMLElement>();
@@ -11,7 +10,7 @@ const card = ref<null | HTMLElement>();
 const refresh = () => triggerRef(text);
 
 const generatedUrl = computed(
-  () => `https://item.0w0.al/rent?name=${encodeURIComponent(text.value)}&id=${nanoid(7)}`,
+  () => `https://item.0w0.al/rent?name=${encodeURIComponent(text.value)}&id=${genId()}`,
 );
 
 const imageUrl = computedAsync(() =>

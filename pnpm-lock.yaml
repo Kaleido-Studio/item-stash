@@ -10,9 +10,6 @@ dependencies:
   html2canvas:
     specifier: ^1.4.1
     version: 1.4.1
-  nanoid:
-    specifier: ^4.0.2
-    version: 4.0.2
   nuxt:
     specifier: ^3.4.3
     version: 3.4.3(@types/node@18.0.0)(eslint@8.40.0)(typescript@5.0.4)
