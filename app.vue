@@ -4,7 +4,7 @@
   <NuxtPage />
   <TheFooter />
   <ClientOnly>
-    <AppRibbon />
+    <Plum />
   </ClientOnly>
 </template>
 <script setup lang="ts">
