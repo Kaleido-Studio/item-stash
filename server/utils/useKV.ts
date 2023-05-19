@@ -9,7 +9,7 @@ type KVValue = {
 };
 
 type KVResponse<T> = {
-  errors: { ode: number; message: string };
+  errors: { code: number; message: string };
   messages: [];
   result: T;
   success: boolean;
