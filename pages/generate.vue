@@ -32,27 +32,37 @@ const download = async () => {
 </script>
 
 <template>
-  <div class="max-w-[980px] mx-auto p-5 py-10">
-    la
-    <div class="py-10">
-      <label for="text">Name</label>
-      <input id="text" v-model="text" type="text" class="p-3 b-1 bg-white" name="text" />
-      <button class="p-3 bg-blue-500 text-white" @click="refresh">刷新下一个该物品</button>
+  <div class="flex flex-col items-center max-w-[700px] mx-auto py-10">
+    <div class="py-5 w-full">
+      <label for="text">物品名称</label>
+      <input id="text" v-model="text" type="text" class="card p-3 m-2 bg-white" name="text" />
     </div>
-    <NuxtLink
-      :href="`/rent?name=${encodeURIComponent(text)}&id=${genId()}`"
-      class="color-blue underline bg-white p-2"
+
+    <div class="pb-5 w-full">
+      生成的链接
+      <NuxtLink
+        :href="`/rent?name=${encodeURIComponent(text)}&id=${genId()}`"
+        class="color-[#2F2F2F] font-bold underline bg-white"
+      >
+        {{ generatedUrl }}
+      </NuxtLink>
+    </div>
+
+    <div class="w-full flex items-center justify-around flex-gap-10">
+      <button class="p-3 card text-(xl center) w-1/2 inline" @click="download">下载该图片</button>
+      <button class="p-3 card text-(xl center) w-1/2 inline" @click="refresh">刷新物品ID</button>
+    </div>
+
+    <div
+      ref="card"
+      class="card w-[700px] h-[300px] my-10 b-black bg-white flex flex-row items-center justify-center"
     >
-      {{ generatedUrl }}
-    </NuxtLink>
-    <div ref="card" class="w-[700px] h-[300px] m-3 b-3 b-black bg-white flex flex-row">
       <div class="flex flex-col justify-center items-end tracking-wider">
         <p class="text-xl">借用物品名称</p>
         <h1 class="text-3xl font-bold">{{ text }}</h1>
         <p class="text-xl">请扫描右侧二维码借用物品</p>
       </div>
-      <img :src="imageUrl" alt="" />
+      <img :src="imageUrl" alt="" class="w-[250px] h-[250px]" />
     </div>
-    <button class="p-3 bg-blue-500 text-white" @click="download">下载</button>
   </div>
 </template>
