@@ -4,6 +4,7 @@ import QRCode from 'qrcode';
 import { computedAsync } from '@vueuse/core';
 import html2canvas from 'html2canvas';
 
+definePageMeta({ middleware: 'auth' });
 const baseurl = import.meta.env.DEV ? '/' : (import.meta.env.VITE_DEPLOY_URL as string);
 const text = ref('物品名字');
 const card = ref<null | HTMLElement>();
