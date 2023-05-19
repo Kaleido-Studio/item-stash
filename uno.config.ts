@@ -11,6 +11,7 @@ export default defineConfig({
   presets: [presetWind(), presetAttributify()],
   transformers: [transformerVariantGroup(), transformerDirectives()],
   shortcuts: {
-    card: 'backdrop-blur-2 backdrop-filter backdrop-saturate-75 hover:backdrop-blur-16 hover:backdrop-saturate-50 rounded-lg shadow shadow-gray-300 filter drop-shadow-2xl transition',
+    card: 'backdrop-(blur-2 filter saturate-75) hover:(backdrop-blur-16 backdrop-saturate-50 drop-shadow) rounded-lg shadow shadow-gray-300 filter drop-shadow-lg transition',
+    strongify: 'outline-(~ 1 zinc-300)',
   },
 });

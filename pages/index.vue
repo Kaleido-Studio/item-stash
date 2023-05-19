@@ -1,13 +1,7 @@
 <template>
-  <div class="card p-4 flex flex-col items-center">
-    <img
-      v-if="imageURL"
-      :src="imageURL"
-      height="200"
-      width="200"
-      class="outline-(~ 1 gray) rounded p-2"
-    />
-    <label class="cursor-pointer outline-(~ 1 gray) rounded px-2 py-1 mt-2">
+  <div class="p-4 flex flex-col items-center">
+    <img v-if="imageURL" :src="imageURL" height="200" width="200" class="rounded p-2 card" />
+    <label class="cursor-pointer strongify rounded px-2 py-1 mt-2 card">
       <input hidden accept="image/*" type="file" @change="handleInput" />
       上传图片
     </label>
