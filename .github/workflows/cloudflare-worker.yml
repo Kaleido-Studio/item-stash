@@ -14,22 +14,17 @@ jobs:
 
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        node: [ 20 ]
+        os: [ubuntu-latest]
+        node: [20]
 
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: 'pnpm'
 
       - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+        uses: actions/checkout@v3
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -44,4 +39,3 @@ jobs:
         uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          
