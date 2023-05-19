@@ -4,13 +4,14 @@ import QRCode from 'qrcode';
 import { computedAsync } from '@vueuse/core';
 import html2canvas from 'html2canvas';
 
+const baseurl = import.meta.env.DEV ? '/' : (import.meta.env.VITE_DEPLOY_URL as string);
 const text = ref('物品名字');
 const card = ref<null | HTMLElement>();
 
 const refresh = () => triggerRef(text);
 
 const generatedUrl = computed(
-  () => `https://item.0w0.al/rent?name=${encodeURIComponent(text.value)}&id=${genId()}`,
+  () => `${baseurl}rent?name=${encodeURIComponent(text.value)}&id=${genId()}`,
 );
 
 const imageUrl = computedAsync(() =>
@@ -37,7 +38,9 @@ const download = async () => {
       <input id="text" v-model="text" type="text" class="p-3 b-1 bg-white" name="text" />
       <button class="p-3 bg-blue-500 text-white" @click="refresh">刷新下一个该物品</button>
     </div>
-    <a :href="generatedUrl" class="color-blue underline bg-white p-2">{{ generatedUrl }}</a>
+    <NuxtLink :href="generatedUrl" class="color-blue underline bg-white p-2">
+      {{ generatedUrl }}
+    </NuxtLink>
     <div ref="card" class="w-[700px] h-[300px] m-3 b-3 b-black bg-white flex flex-row">
       <div class="flex flex-col justify-center items-end tracking-wider">
         <p class="text-xl">借用物品名称</p>
