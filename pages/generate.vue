@@ -38,7 +38,10 @@ const download = async () => {
       <input id="text" v-model="text" type="text" class="p-3 b-1 bg-white" name="text" />
       <button class="p-3 bg-blue-500 text-white" @click="refresh">刷新下一个该物品</button>
     </div>
-    <NuxtLink :href="generatedUrl" class="color-blue underline bg-white p-2">
+    <NuxtLink
+      :href="`/rent?name=${encodeURIComponent(text)}&id=${genId()}`"
+      class="color-blue underline bg-white p-2"
+    >
       {{ generatedUrl }}
     </NuxtLink>
     <div ref="card" class="w-[700px] h-[300px] m-3 b-3 b-black bg-white flex flex-row">

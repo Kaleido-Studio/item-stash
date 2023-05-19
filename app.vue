@@ -12,5 +12,25 @@
 <script setup lang="ts">
 // eslint-disable-next-line import/no-extraneous-dependencies
 import '@unocss/reset/tailwind-compat.css';
+import 'vue-toastification/dist/index.css';
+import { provideToast } from 'vue-toastification';
 import favicon from './assets/favicon.svg';
+
+provideToast({
+  timeout: 2000,
+  hideProgressBar: true,
+  // @ts-expect-error vendor
+  position: 'top-center',
+});
 </script>
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>
