@@ -23,8 +23,7 @@ const useKV = () => {
     const options: FetchOptions<'json'> = {
       baseURL,
       headers: {
-        'X-Auth-Key': apiToken!,
-        'X-Auth-Email': 'nuist.kx@outlook.com',
+        Authorization: `Bearer ${apiToken}`,
       },
       ...fetchOptions,
     };
