@@ -1,29 +1,11 @@
 <template>
   <div class="p-4 flex flex-col items-center">
-    <img v-if="imageURL" :src="imageURL" height="200" width="200" class="rounded p-2 card" />
-    <label class="cursor-pointer strongify rounded px-2 py-1 mt-2 card">
-      <input hidden accept="image/*" type="file" @change="handleInput" />
-      设置图片
-    </label>
+    <div class="flex-(~ col) max-w-sm w-full">
+      <h1 class="px-2 py-1 text-(xl center)">汝欲何为？</h1>
+      <NuxtLink href="/rent" class="card px-2 py-1 text-(xl center) mt-2">借用物品</NuxtLink>
+      <NuxtLink href="/generate" class="card px-2 py-1 text-(xl center) mt-2">登记物品</NuxtLink>
+      <NuxtLink href="/list" class="card px-2 py-1 text-(xl center) mt-2">管理物品</NuxtLink>
+    </div>
   </div>
 </template>
-<script setup lang="ts">
-import icon from '../assets/favicon.svg';
-
-const file = ref<File | null>(null);
-const imageURL = ref<string | null>(icon);
-watch(file, async () => {
-  if (!file.value) {
-    imageURL.value = null;
-    return;
-  }
-  const buffer = await file.value.arrayBuffer();
-  const blob = new Blob([buffer], { type: file.value.type });
-  imageURL.value = URL.createObjectURL(blob);
-});
-const handleInput = (e: Event) => {
-  const inputElement = e.target as HTMLInputElement;
-  if (!inputElement.files) return;
-  [file.value] = inputElement.files;
-};
-</script>
+<script setup lang="ts"></script>
