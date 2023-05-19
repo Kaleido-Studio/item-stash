@@ -34,6 +34,8 @@ jobs:
       - name: Install Dependencies
         if: steps.setup-node.outputs.cache-hit != 'true'
         run: pnpm i
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Build
         run: pnpm build
