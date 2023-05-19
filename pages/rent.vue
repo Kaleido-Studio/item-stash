@@ -1,10 +1,11 @@
 <template>
-  here is the rent page.{{ query }}
-  <img v-if="imageURL" :src="imageURL" height="200" width="200" class="rounded p-2 card" />
-  <label class="cursor-pointer strongify rounded px-2 py-1 mt-2 card">
-    <input hidden accept="image/*" type="file" @change="handleInput" />
-    设置图片
-  </label>
+  <div>
+    <img v-if="imageURL" :src="imageURL" height="200" width="200" class="rounded p-2 card" />
+    <label class="cursor-pointer strongify rounded px-2 py-1 mt-2 card">
+      <input hidden accept="image/*" type="file" @change="handleInput" />
+      设置图片
+    </label>
+  </div>
 </template>
 <script setup lang="ts">
 import icon from '../assets/favicon.svg';
