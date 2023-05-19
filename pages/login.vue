@@ -5,7 +5,7 @@
       <form class="flex-(~ col)" @submit.prevent="handleSubmit">
         <label class="card p-4 mt-4">
           密码
-          <input v-model="password" class="strongify p-2 rounded" />
+          <input v-model="password" type="password" class="strongify p-2 rounded" />
         </label>
         <button type="submit" class="card strongify bg-transparent mt-4 py-1 px-2">登录</button>
       </form>
