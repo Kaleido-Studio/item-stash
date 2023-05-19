@@ -2,7 +2,7 @@
   <Head><Link rel="shortcut icon" :href="favicon" /><Title>物品管理</Title></Head>
   <div class="flex flex-col items-center min-h-[100vh]">
     <TheHeader class="mb-4" />
-    <main class="max-w-[1280px] px-2 w-full flex-grow">
+    <main class="max-w-[80rem] px-2 w-full flex-grow">
       <NuxtPage />
     </main>
     <TheFooter class="mt-4" />

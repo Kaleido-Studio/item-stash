@@ -3,7 +3,7 @@
     <img v-if="imageURL" :src="imageURL" height="200" width="200" class="rounded p-2 card" />
     <label class="cursor-pointer strongify rounded px-2 py-1 mt-2 card">
       <input hidden accept="image/*" type="file" @change="handleInput" />
-      上传图片
+      设置图片
     </label>
   </div>
 </template>
