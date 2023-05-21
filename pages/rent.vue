@@ -14,7 +14,12 @@
         </label>
         <label class="">
           <p>物品数量</p>
-          <input class="b-1 rounded-xl p-1 my-2 px-4 w-full" name="name" :value="1" type="number" />
+          <input
+            class="b-1 rounded-xl p-1 my-2 px-4 w-full"
+            name="item_num"
+            :value="1"
+            type="number"
+          />
         </label>
       </fieldset>
 
@@ -25,7 +30,7 @@
           <input
             id="item-date"
             class="b-1 rounded-xl p-1 my-2 px-4 w-full"
-            name="org"
+            name="rent_qq"
             type="text"
           />
         </label>
@@ -34,7 +39,7 @@
           <input
             id="item-date"
             class="b-1 rounded-xl p-1 my-2 px-4 w-full"
-            name="org"
+            name="rent_rg"
             type="text"
           />
         </label>
@@ -44,11 +49,19 @@
         <legend class="font-bold text-xl text-shadow-sm">时间</legend>
         <label>
           借用时间
-          <input type="datetime-local" class="b-1 rounded-xl p-1 my-2 px-4 w-full" name="date" />
+          <input
+            type="datetime-local"
+            class="b-1 rounded-xl p-1 my-2 px-4 w-full"
+            name="rent_date"
+          />
         </label>
         <label>
           预期归还时间
-          <input type="datetime-local" class="b-1 rounded-xl p-1 my-2 px-4 w-full" name="date" />
+          <input
+            type="datetime-local"
+            class="b-1 rounded-xl p-1 my-2 px-4 w-full"
+            name="return_date"
+          />
         </label>
       </fieldset>
 
@@ -97,6 +110,8 @@
         value="提交"
       />
     </form>
+
+    {{ process }}
   </div>
 </template>
 
@@ -106,6 +121,7 @@ import icon from '../assets/favicon.svg';
 const file = ref<File | null>(null);
 const imageURL = ref<string | null>(icon);
 const previewWindow = ref<HTMLDialogElement | null>();
+const process = ref(0);
 
 const handleInput = (e: Event) => {
   const inputElement = e.target as HTMLInputElement;
@@ -122,6 +138,10 @@ const handleInput = (e: Event) => {
 
 const submit = async (e: Event) => {
   const form = new FormData(e.target as HTMLFormElement);
+  const result = await postWithProgress('/api/submit', form, (newValue) => {
+    process.value = newValue;
+  });
+  console.log(result);
 };
 
 const preview = (e: Event) => {
