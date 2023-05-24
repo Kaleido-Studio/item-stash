@@ -11,7 +11,7 @@
 </template>
 <script setup lang="ts">
 // eslint-disable-next-line import/no-extraneous-dependencies
-import '@unocss/reset/tailwind-compat.css';
+import '@unocss/reset/tailwind.css';
 import 'vue-toastification/dist/index.css';
 import { provideToast } from 'vue-toastification';
 import favicon from './assets/favicon.svg';
@@ -32,5 +32,8 @@ provideToast({
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
+}
+input {
+  @apply bg-transparent;
 }
 </style>
