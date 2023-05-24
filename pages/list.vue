@@ -19,6 +19,7 @@
           </tr>
         </tbody>
       </table>
+      <button class="card px-3 py-1 mt-5 w-full" @click="loadEntries()">刷新</button>
     </div>
     <dialog id="info" ref="dialog" class="rounded-xl card h-2/3 w-4/5">
       <form class="flex flex-col">

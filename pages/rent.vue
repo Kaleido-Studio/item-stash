@@ -99,6 +99,8 @@
         ></textarea>
       </fieldset>
 
+      <input hidden name="item_id" :value="$route.query.id" />
+
       <dialog ref="previewWindow" class="rounded-xl animate-fadein animater">
         <fieldset class="b-1 p-4 card">
           <legend class="font-bold text-xl">图片预览</legend>
@@ -126,27 +128,29 @@
 
       <button
         type="submit"
-        :class="'ld-ext-right running'"
-        class="card cursor-pointer strongify rounded px-2 py-2 mt-2 bg-transparent text-center"
+        :class="{ running: isLoading }"
+        class="card ld-ext-right cursor-pointer strongify rounded px-2 py-2 mt-2 bg-transparent text-center"
       >
         提交
-        <div class="ld ld-ring"></div>
+        <div class="ld ld-loader ld-ring ld-spin"></div>
       </button>
     </form>
-
-    {{ process }}
   </div>
 </template>
 
 <script setup lang="ts">
 import 'ldbutton/index.min.css';
 import '@loadingio/loading.css/loading.min.css';
+import { useToast } from 'vue-toastification';
 import icon from '../assets/favicon.svg';
+
+const toast = useToast();
+const router = useRouter();
 
 const file = ref<File | null>(null);
 const imageURL = ref<string | null>(icon);
 const previewWindow = ref<HTMLDialogElement | null>();
-const process = ref(0);
+const isLoading = ref(false);
 
 const handleInput = (e: Event) => {
   const inputElement = e.target as HTMLInputElement;
@@ -163,10 +167,19 @@ const handleInput = (e: Event) => {
 
 const submit = async (e: Event) => {
   const form = new FormData(e.target as HTMLFormElement);
-  const result = await postWithProgress('/api/submit', form, (newValue) => {
-    process.value = newValue;
+  isLoading.value = true;
+  const result = await useFetch('/api/submit', {
+    method: 'POST',
+    body: form,
   });
-  console.log(result);
+  if (result.data.value?.success) {
+    router.push(
+      `/result?name=${result.data.value.name}&time=${result.data.value.timestamp}&success=true`,
+    );
+    return;
+  }
+  toast.error('提交失败');
+  isLoading.value = false;
 };
 
 const preview = (e: Event) => {
@@ -177,7 +190,7 @@ const preview = (e: Event) => {
 };
 </script>
 
-<style module>
+<style scoped>
 @keyframes fadein {
   from {
     opacity: 0;
@@ -210,5 +223,12 @@ dialog {
   animation-name: fadeout;
   animation-duration: 0.4s;
   animation-fill-mode: both;
+}
+
+.running {
+  opacity: 0.7;
+  /* add layer of gray */
+  pointer-events: none;
+  background-color: #cccccc;
 }
 </style>

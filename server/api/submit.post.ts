@@ -2,7 +2,7 @@ export default defineEventHandler(async (event) => {
   const data = await readMultipartFormData(event);
   let buf = Buffer.from('');
   const meta = {} as { [index: string]: string };
-  let name;
+  let name = '';
   const timestamp = String(Date.now());
 
   data?.forEach(async (item) => {
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     return {
       success: false,
       message: 'No data received.',
-      name,
+      name: name ?? '',
       timestamp,
     };
   }
