@@ -6,6 +6,7 @@
         <label class="">
           <p>物品名称</p>
           <input
+            required
             class="b-1 rounded-xl p-1 my-2 px-4 w-full"
             name="name"
             :value="$route.query.name"
@@ -29,6 +30,7 @@
           <p>借用人 QQ</p>
           <input
             id="item-date"
+            required
             class="b-1 rounded-xl p-1 my-2 px-4 w-full"
             name="rent_qq"
             type="text"
@@ -50,6 +52,7 @@
         <label>
           借用时间
           <input
+            required
             type="datetime-local"
             class="b-1 rounded-xl p-1 my-2 px-4 w-full"
             name="rent_date"
@@ -58,6 +61,7 @@
         <label>
           预期归还时间
           <input
+            required
             type="datetime-local"
             class="b-1 rounded-xl p-1 my-2 px-4 w-full"
             name="return_date"
@@ -73,9 +77,26 @@
           @click="preview"
         >
           {{ file ? '预览图片' : '上传图片' }}
-          <input name="img" hidden accept="image/*" type="file" @change="handleInput" />
+          <input
+            class="opacity-0 absolute"
+            required
+            name="img"
+            accept="image/*"
+            type="file"
+            @change="handleInput"
+          />
         </label>
         {{ file ? '成功选择了图片' : '' }}
+      </fieldset>
+
+      <!-- field: 备注 -->
+      <fieldset class="b-1 p-4 card">
+        <legend class="font-bold text-xl text-shadow-sm">备注</legend>
+        <textarea
+          class="b-1 rounded-xl p-1 my-2 px-4 w-full"
+          name="remark"
+          placeholder="备注(可选)"
+        ></textarea>
       </fieldset>
 
       <dialog ref="previewWindow" class="rounded-xl animate-fadein animater">
@@ -103,12 +124,14 @@
         </div>
       </dialog>
 
-      <input
-        id="sub"
-        class="cursor-pointer strongify rounded px-2 py-1 mt-2 bg-transparent"
+      <button
         type="submit"
-        value="提交"
-      />
+        :class="'ld-ext-right running'"
+        class="card cursor-pointer strongify rounded px-2 py-2 mt-2 bg-transparent text-center"
+      >
+        提交
+        <div class="ld ld-ring"></div>
+      </button>
     </form>
 
     {{ process }}
@@ -116,6 +139,8 @@
 </template>
 
 <script setup lang="ts">
+import 'ldbutton/index.min.css';
+import '@loadingio/loading.css/loading.min.css';
 import icon from '../assets/favicon.svg';
 
 const file = ref<File | null>(null);
