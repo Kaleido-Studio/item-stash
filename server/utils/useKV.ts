@@ -2,10 +2,10 @@ import { ofetch, type FetchOptions } from 'ofetch';
 
 const { accountId, apiToken, namespaceId } = process.env;
 
-type KVValue = {
+export type KVValue = {
   name: string;
-  metadata: { [index: string]: string };
-  expiration: number;
+  metadata: { [index: string]: string | number };
+  expiration?: number;
 };
 
 type KVResponse<T> = {
