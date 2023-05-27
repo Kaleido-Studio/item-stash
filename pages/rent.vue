@@ -119,7 +119,7 @@
           </button>
           <button
             class="cursor-pointer strongify rounded px-2 mb-2 py-1 block w-25 text-center card"
-            @click="previewWindow?.close()"
+            @click.prevent="previewWindow?.close()"
           >
             确认
           </button>
